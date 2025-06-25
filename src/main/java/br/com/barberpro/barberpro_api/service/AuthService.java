@@ -1,7 +1,7 @@
 package br.com.barberpro.barberpro_api.service;
 
-import br.com.barberpro.entity.User;
-import br.com.barberpro.security.JwtService;
+import br.com.barberpro.barberpro_api.entity.User;
+import br.com.barberpro.barberpro_api.security.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

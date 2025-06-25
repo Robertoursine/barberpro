@@ -1,6 +1,8 @@
 package br.com.barberpro.barberpro_api.security;
 
-import io.jsonwebtoken.io.IOException;
+import br.com.barberpro.barberpro_api.repository.UserRepository;
+import br.com.barberpro.barberpro_api.entity.User;
+import java.io.IOException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,7 +24,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);
             String email = jwtService.extractUsername(token);
-            User user = userRepo.findByEmail(email);
+            User user = userRepo.findByEmail(email).orElse(null);
             UsernamePasswordAuthenticationToken auth =
                     new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(auth);
